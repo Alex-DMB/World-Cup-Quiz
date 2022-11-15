@@ -8,6 +8,7 @@ export default defineConfig({
   resolve:{
     alias:{
       '@img' : path.resolve(__dirname, './src/img'),
+      '@audio' : path.resolve(__dirname, './src/audio'),
     },
   },
 

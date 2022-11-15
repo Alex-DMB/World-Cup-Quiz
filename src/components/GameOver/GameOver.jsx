@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { QuizContext } from '../../context/quiz';
 import { Howl } from 'howler';
+import feedbackSound from '@audio/feedback.mp3';
 
 const GameOver = () => {
     const [quizState, dispatch] = useContext(QuizContext);
 
-    const feedback = ['src/audio/feedback.mp3'];
     const callMySound = (src) => {
         const sound = new Howl({
             src,
@@ -14,19 +14,29 @@ const GameOver = () => {
         sound.play();
     };
 
-    callMySound(feedback);
+    callMySound(feedbackSound);
 
     return (
         <div
             className='
-    w-[800px] gap-16 h-96
-    py-8 flex flex-col items-center justify-center
-    bg-gradient-to-b from-[#59081f3f] to-[#330512]'>
-            <h2 className='text-gold text-2xl'>Fim de Jogo!</h2>
+                w-[800px] gap-16 h-96
+                py-8 flex flex-col items-center justify-center
+                bg-gradient-to-b from-primary-800 to-primary-900
+                shadow-2xl shadow-black
+
+                responsive:w-[300px] responsive:shadow-transparent responsive:from-transparent responsive:to-transparent
+                '>
+            <h2 className='text-gold text-2xl responsive:text-xl'>
+                Fim de Jogo!
+            </h2>
 
             <div>
-                <p className='text-center'>Pontuação: {quizState.score} de 7</p>
-                <p className='text-xl  text-center'>{quizState.feedback}</p>
+                <p className='text-center responsive:text-sm'>
+                    Pontuação: {quizState.score} de 7
+                </p>
+                <p className='text-xl text-center responsive:text-base'>
+                    {quizState.feedback}
+                </p>
             </div>
 
             <button

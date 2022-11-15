@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useContext } from 'react';
 import { QuizContext } from '../../context/quiz';
 import { Lightbulb, Trash } from 'phosphor-react';
@@ -21,18 +20,29 @@ const Question = () => {
             className={`
             w-[800px] gap-8 min-h-[384px] max-h-[800px]
             py-8 text-gold flex flex-col items-center justify-start
-            bg-gradient-to-b from-[#59081f3f] to-[#330512] 
+            bg-gradient-to-b from-primary-800 to-primary-900 
+            shadow-2xl shadow-black
+
+            responsive:w-[300px] responsive:shadow-transparent responsive:from-transparent responsive:to-transparent
 
             `}>
-            <p className='text-white font-extralight text-center'>
+            <p
+                className='text-white font-extralight text-center 
+                responsive:text-[12px] '>
                 Pergunta {quizState.currentQuestion + 1} de 7
             </p>
 
-            <h2 className='uppercase font-light text-2xl text-center w-[600px]'>
+            <h2
+                className='uppercase font-light text-2xl text-center w-[600px] 
+                responsive:text-lg responsive:w-[300px] '>
                 {currentQuestion.question}
             </h2>
 
-            <div className='flex w-[calc(256px*2+16px)] gap-4 flex-wrap'>
+            <div
+                className='
+            flex w-[calc(256px*2+16px)] gap-4 flex-wrap
+            responsive:w-[256px]
+            '>
                 {currentQuestion.options.map((option, index) => (
                     <Option
                         flag={currentFlag[index]}

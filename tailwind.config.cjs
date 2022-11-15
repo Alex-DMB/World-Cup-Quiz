@@ -5,14 +5,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+      
+      screens:{
+        'responsive': {'max': '800px'},
+      },
       colors:{
         primary:{
           '300':'#FF1758',
           '400':'#E5154F',
           '500':'#B2103D',
           '700':'#59081F',
-          '900':'#330512',
+          '800':'#330511',
+          '900':'#25040d',
         },
         
         'gold':'#FFC979',

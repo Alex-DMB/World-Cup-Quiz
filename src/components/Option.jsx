@@ -2,14 +2,11 @@ import { useContext } from 'react';
 import { QuizContext } from '../context/quiz';
 import '/node_modules/flag-icons/css/flag-icons.min.css';
 import { Howl } from 'howler';
+import wrongSound from '@audio/wrong.mp3';
+import correctSound from '@audio/correct.mp3';
 
 export default function Option({ option, selectOption, answer, flag, hide }) {
     const [quizState, dispatch] = useContext(QuizContext);
-
-    const correctQuestion = [
-        'http://codeskulptor-demos.commondatastorage.googleapis.com/descent/background%20music.mp3',
-    ];
-    const wrongQuestion = ['src/audio/wrong.mp3'];
 
     const callMySound = (src) => {
         const sound = new Howl({
@@ -25,17 +22,17 @@ export default function Option({ option, selectOption, answer, flag, hide }) {
                 selectOption();
                 {
                     !quizState.answerSelected && option === answer
-                        ? callMySound(correctQuestion)
+                        ? callMySound(correctSound)
                         : '';
                 }
                 {
                     !quizState.answerSelected && option !== answer
-                        ? callMySound(wrongQuestion)
+                        ? callMySound(wrongSound)
                         : '';
                 }
             }}
             className={`
-                clipPath w-64 h-12
+                clipPath w-64 h-12 relative
                 flex items-center justify-center 
                 cursor-pointer 
                 hover:relative hover:bg-gold 
